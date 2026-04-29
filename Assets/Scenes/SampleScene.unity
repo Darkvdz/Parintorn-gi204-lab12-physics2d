@@ -6233,9 +6233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b864ada8915c2294c87b49fd6bcc6a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
-  shootPoint: {fileID: 0}
+  shootPoint: {fileID: 266852259}
   target: {fileID: 1086922261}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5436700579983354835, guid: 4994dc0658169224490431642ae94cf8, type: 3}
 --- !u!1 &1877328274
 GameObject:
   m_ObjectHideFlags: 0

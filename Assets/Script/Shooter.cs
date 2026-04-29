@@ -7,9 +7,17 @@ public class Shooter : MonoBehaviour
     public GameObject target;
     public Rigidbody2D bulletPrefab;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         Vector2 screenPos = Mouse.current.position.ReadValue();
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        worldPos.z = 0;
+        target.transform.position = worldPos;
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -20,7 +28,7 @@ public class Shooter : MonoBehaviour
 
             if (hit.collider != null)
             {
-                target.transform.position = new Vector2(hit.point.x, hit.point.y);
+                //target.transform.position = new Vector2(hit.point.x, hit.point.y);
                 Debug.Log($"Hit {hit.collider.gameObject.name}");
 
                 Vector2 projectileVelocity = CalculateProjectileVelocity(shootPoint.position, hit.point, 1f);
@@ -36,7 +44,6 @@ public class Shooter : MonoBehaviour
     Vector2 CalculateProjectileVelocity(Vector2 origin, Vector2 target, float time)
     {
         Vector2 direction = target - origin;
-        return new Vector2(direction.x / time, direction.y / 
-            time + 0.5f * Mathf.Abs(Physics2D.gravity.y) * time);
+        return new Vector2(direction.x / time, (direction.y / time) + 0.5f * Mathf.Abs(Physics2D.gravity.y) * time);
     }
 }
